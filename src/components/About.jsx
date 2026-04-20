@@ -1,39 +1,48 @@
 import React from "react";
-import { Tilt } from 'react-tilt';
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
-import '../index.css'; // Import your CSS file
-import { styles } from "../styles"; // Ensure this is defined properly
-import { services } from "../constants"; // Ensure services array is properly defined
-import { SectionWrapper } from "../hoc"; // Ensure this is correctly defined
-import { fadeIn, textVariant } from "../utils/motion"; // Ensure this is correctly defined
+import "../index.css";
+import { styles } from "../styles";
+import { services } from "../constants";
+import { SectionWrapper } from "../hoc";
+import { fadeIn, textVariant } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => (
   <Tilt className="w-full">
     <motion.div
-      initial={{ opacity: 0, x: 50 }} // Initial state when not in view
+      initial={{ opacity: 0, x: 50 }}
       whileInView={{
         opacity: 1,
         x: 0,
-        transition: { type: "spring", stiffness: 200, damping: 20, delay: index * 0.5 },
+        transition: {
+          type: "spring",
+          stiffness: 200,
+          damping: 20,
+          delay: index * 0.2,
+        },
       }}
-      whileHover={{ scale: 1.05 }} // Optional: add hover effect
-      viewport={{ once: false }} // Ensures the animation triggers every time the element enters the viewport
+      whileHover={{ scale: 1.05 }}
+      viewport={{ once: true }}
       className="w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
+      {/* ✅ Responsive card size */}
       <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className="bg-violet-950 rounded-[20px] py-5 px-4 h-[280px] flex flex-col justify-center items-center text-center"
+        className="bg-violet-950 rounded-[20px] 
+                   py-4 px-3 sm:py-5 sm:px-4 
+                   h-[200px] sm:h-[280px] 
+                   flex flex-col justify-center items-center text-center"
       >
+        {/* ✅ Responsive icon */}
         <img
           src={icon}
-          alt={title} // Better alt text for accessibility
-          className="w-24 h-24 object-contain" // Bigger icon
+          alt={title}
+          className="w-14 h-14 sm:w-24 sm:h-24 object-contain"
         />
-        <h3 className="text-white text-[24px] font-bold">{title}</h3> {/* Larger text */}
+
+        {/* ✅ Responsive text */}
+        <h3 className="text-white text-[14px] sm:text-[24px] font-bold mt-2">
+          {title}
+        </h3>
       </div>
     </motion.div>
   </Tilt>
@@ -42,14 +51,16 @@ const ServiceCard = ({ index, title, icon }) => (
 const About = () => {
   return (
     <>
+      {/* Heading */}
       <motion.div variants={textVariant()}>
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
       </motion.div>
 
+      {/* Description */}
       <motion.p
         variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
+        className="mt-4 text-secondary text-[13px] max-w-3xl leading-[30px]"
       >
         I'm a skilled software developer with experience in TypeScript and
         JavaScript, and expertise in frameworks like React, Node.js, and
@@ -58,11 +69,12 @@ const About = () => {
         real-world problems. Let's work together to bring your ideas to life!
       </motion.p>
 
-      <div className='mt-10 flex flex-wrap justify-center items-center gap-10'>
+      {/* Cards */}
+      <div className="mt-10 flex flex-wrap justify-center items-center gap-4 sm:gap-10">
   {services.map((service, index) => (
     <div
-      className='w-full sm:w-[45%] md:w-[22.5%] lg:w-[18%] xl:w-[16%] 2xl:w-[14%] items-center' // Adjust width responsively for different screen sizes
       key={service.title}
+      className="w-[85%] xs:w-[75%] sm:w-[45%] md:w-[22.5%] lg:w-[18%] xl:w-[16%] 2xl:w-[14%]"
     >
       <ServiceCard index={index} {...service} />
     </div>

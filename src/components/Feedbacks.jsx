@@ -14,34 +14,47 @@ const FeedbackCard = ({
   image,
 }) => (
   <motion.div
-    initial={{ opacity: 0, y: 50 }} // Set initial state for animation
+    initial={{ opacity: 0, y: 50 }}
     whileInView={{
       opacity: 1,
-      y: 0, // Animate back to the original position
-      transition: { type: "spring", stiffness: 100, damping: 25, delay: index * 0.5 },
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 25,
+        delay: index * 0.3,
+      },
     }}
-    viewport={{ once: false }} // Ensure the animation triggers every time the element enters the viewport
-    className="bg-slate-950 p-10 rounded-3xl xs:w-full w-[300px]"
+    viewport={{ once: true }}
+    className="bg-slate-950 p-6 sm:p-10 rounded-3xl w-[260px] sm:w-[300px]"
   >
-    <p className="text-white font-black text-[48px]">"</p>
+    {/* Quote */}
+    <p className="text-white font-black text-[32px] sm:text-[48px]">"</p>
 
     <div>
-      <p className="text-white tracking-wider text-[18px]">{testimonial}</p>
+      {/* Testimonial text */}
+      <p className="text-white tracking-wider text-[14px] sm:text-[18px]">
+        {testimonial}
+      </p>
 
-      <div className="mt-7 flex justify-between items-center">
+      <div className="mt-5 sm:mt-7 flex justify-between items-center">
         <div className="flex-1 flex flex-col">
-          <p className="text-white font-medium text-[16px]">
+          {/* Name */}
+          <p className="text-white font-medium text-[14px] sm:text-[16px]">
             <span className="blue-text-gradient">@</span> {name}
           </p>
-          <p className="text-secondary text-[12px]">
+
+          {/* Designation */}
+          <p className="text-secondary text-[11px] sm:text-[12px]">
             {designation} of {company}
           </p>
         </div>
 
+        {/* Image */}
         <img
           src={image}
           alt={`feedback_by-${name}`}
-          className="w-10 h-10 rounded-full object-cover"
+          className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover"
         />
       </div>
     </div>
@@ -51,18 +64,26 @@ const FeedbackCard = ({
 const Feedbacks = () => {
   return (
     <div className="-mt-20 bg-slate-800 rounded-[20px]">
-      {/* Centering the content vertically and horizontally */}
-      <div className={`bg-slate-700 rounded-2xl ${styles.padding} min-h-[280px] flex flex-col justify-center`}>
+      {/* Heading */}
+      <div
+        className={`bg-slate-700 rounded-2xl ${styles.padding} min-h-[220px] sm:min-h-[280px] flex flex-col justify-center`}
+      >
         <motion.div variants={textVariant()}>
           <p className={styles.sectionSubText}>What others say</p>
           <h2 className={styles.sectionHeadText}>Testimonials.</h2>
         </motion.div>
       </div>
 
-      {/* Container for testimonial cards */}
-      <div className={`-mt-20 pb-14 ${styles.paddingX} flex flex-wrap justify-center gap-7`}>
+      {/* Cards */}
+      <div
+        className={`-mt-16 sm:-mt-20 pb-10 sm:pb-14 ${styles.paddingX} flex flex-wrap justify-center gap-5 sm:gap-7`}
+      >
         {testimonials.map((testimonial, index) => (
-          <FeedbackCard key={testimonial.name} index={index} {...testimonial} />
+          <FeedbackCard
+            key={testimonial.name}
+            index={index}
+            {...testimonial}
+          />
         ))}
       </div>
     </div>

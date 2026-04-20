@@ -1,7 +1,6 @@
 import React from "react";
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
+import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
 import { motion } from "framer-motion";
-
 import "react-vertical-timeline-component/style.min.css";
 
 import { styles } from "../styles";
@@ -20,30 +19,35 @@ const ExperienceCard = ({ experience }) => {
       date={experience.date}
       iconStyle={{ background: experience.iconBg }}
       icon={
-        <div className='flex justify-center items-center w-full h-full'>
+        <div className="flex justify-center items-center w-full h-full">
           <img
             src={experience.icon}
             alt={experience.company_name}
-            className='w-[60%] h-[60%] object-contain'
+            className="w-[55%] h-[55%] sm:w-[60%] sm:h-[60%] object-contain"
           />
         </div>
       }
     >
+      {/* Title + Company */}
       <div>
-        <h3 className='text-white text-[24px] font-bold'>{experience.title}</h3>
+        <h3 className="text-white text-[16px] sm:text-[24px] font-bold leading-snug">
+          {experience.title}
+        </h3>
+
         <p
-          className='text-secondary text-[16px] font-semibold'
+          className="text-secondary text-[12px] sm:text-[16px] font-semibold"
           style={{ margin: 0 }}
         >
           {experience.company_name}
         </p>
       </div>
 
-      <ul className='mt-5 list-disc ml-5 space-y-2'>
+      {/* Points */}
+      <ul className="mt-3 sm:mt-5 list-disc ml-3 sm:ml-5 space-y-1 sm:space-y-2">
         {experience.points.map((point, index) => (
           <li
             key={`experience-point-${index}`}
-            className='text-white-100 text-[14px] pl-1 tracking-wider'
+            className="text-white-100 text-[11px] sm:text-[14px] pl-1 tracking-wider"
           >
             {point}
           </li>
@@ -56,16 +60,19 @@ const ExperienceCard = ({ experience }) => {
 const Experience = () => {
   return (
     <>
+      {/* Heading */}
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
           What I have done so far
         </p>
+
         <h2 className={`${styles.sectionHeadText} text-center`}>
           Work Experience.
         </h2>
       </motion.div>
 
-      <div className='mt-20 flex flex-col'>
+      {/* Timeline */}
+      <div className="mt-16 sm:mt-20 flex flex-col">
         <VerticalTimeline>
           {experiences.map((experience, index) => (
             <ExperienceCard

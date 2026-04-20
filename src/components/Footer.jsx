@@ -1,28 +1,34 @@
 import React from "react";
-import { motion } from "framer-motion"; // Importing framer-motion for animation
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }} // Initial state (invisible)
-      whileInView={{ opacity: 1 }} // Animation when it comes into view
-      transition={{ duration: 1 }} // Duration of the animation
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
       className="footer"
     >
-      <div className="text-center py-3 text-white">
-        <p>faddysportfolio.com | All rights reserved</p>
+      <div className="text-center py-2 sm:py-3 text-white">
         
-        {/* Additional link */}
-        <div className="mt-4">
+        {/* Main text (responsive size) */}
+        <p className="text-[11px] sm:text-[14px] text-gray-300">
+          faddysportfolio.com | All rights reserved
+        </p>
+
+        {/* GitHub link (smaller on mobile) */}
+        <div className="mt-2 sm:mt-4">
           <a
-            href="https://github.com/faddy1184" // Example GitHub link
+            href="https://github.com/faddy1184"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-400 hover:text-gray-300 "
+            className="text-[11px] sm:text-[14px] text-gray-400 hover:text-white transition"
           >
             Visit My GitHub
           </a>
         </div>
+
       </div>
     </motion.div>
   );

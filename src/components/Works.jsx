@@ -1,5 +1,5 @@
 import React from "react";
-import { Tilt } from 'react-tilt';
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { github } from "../assets";
@@ -17,13 +17,18 @@ const ProjectCard = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }} // Initial state when not in view
+      initial={{ opacity: 0, y: 50 }}
       whileInView={{
         opacity: 1,
         y: 0,
-        transition: { type: "spring", stiffness: 200, damping: 20, delay: index * 0.5 },
+        transition: {
+          type: "spring",
+          stiffness: 200,
+          damping: 20,
+          delay: index * 0.3,
+        },
       }}
-      viewport={{ once: false }} // Ensures the animation triggers every time the element enters the viewport
+      viewport={{ once: true }}
     >
       <Tilt
         options={{
@@ -31,19 +36,20 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        className="bg-slate-950 p-5 rounded-2xl w-[360px]"
+        className="bg-slate-950 p-4 sm:p-5 rounded-2xl w-[300px] sm:w-[360px]"
       >
-        <div className="relative w-full h-[230px]">
+        {/* Image */}
+        <div className="relative w-full h-[180px] sm:h-[230px]">
           <img
             src={image}
             alt="project_image"
             className="w-full h-full object-contain rounded-2xl"
           />
 
-          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+          <div className="absolute inset-0 flex justify-end m-2 sm:m-3 card-img_hover">
             <div
               onClick={() => window.open(source_code_link, "_blank")}
-              className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              className="black-gradient w-8 h-8 sm:w-10 sm:h-10 rounded-full flex justify-center items-center cursor-pointer"
             >
               <img
                 src={github}
@@ -54,14 +60,24 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div className="mt-5">
-          <h3 className="text-white font-bold text-[24px]">{name}</h3>
-          <p className="mt-2 text-secondary text-[14px]">{description}</p>
+        {/* Text */}
+        <div className="mt-4 sm:mt-5">
+          <h3 className="text-white font-bold text-[18px] sm:text-[24px]">
+            {name}
+          </h3>
+
+          <p className="mt-2 text-secondary text-[12px] sm:text-[14px]">
+            {description}
+          </p>
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        {/* Tags */}
+        <div className="mt-3 sm:mt-4 flex flex-wrap gap-1 sm:gap-2">
           {tags.map((tag) => (
-            <p key={`${name}-${tag.name}`} className={`text-[14px] ${tag.color}`}>
+            <p
+              key={`${name}-${tag.name}`}
+              className={`text-[11px] sm:text-[14px] ${tag.color}`}
+            >
               #{tag.name}
             </p>
           ))}
@@ -74,15 +90,17 @@ const ProjectCard = ({
 const Works = () => {
   return (
     <div className="w-full min-h-screen flex flex-col justify-center bg-primary">
+      {/* Heading */}
       <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>My work</p>
+        <p className={`${styles.sectionSubText}`}>My work</p>
         <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
       </motion.div>
 
+      {/* Description */}
       <div className="w-full flex">
         <motion.p
           variants={fadeIn("", "", 0.1, 1)}
-          className="mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]"
+          className="mt-3 text-secondary text-[14px] sm:text-[17px] max-w-3xl leading-[24px] sm:leading-[30px]"
         >
           Following projects showcase my skills and experience through real-world
           examples of my work. Each project is briefly described with links to code
@@ -91,7 +109,8 @@ const Works = () => {
         </motion.p>
       </div>
 
-      <div className="items-center bg-purple mt-20 flex flex-wrap justify-center gap-7">
+      {/* Cards */}
+      <div className="mt-10 sm:mt-20 flex flex-wrap justify-center gap-4 sm:gap-7">
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}

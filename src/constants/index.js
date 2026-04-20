@@ -115,86 +115,83 @@ import {
   ];
   
   const experiences = [
-    {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
-      iconBg: "#383E56",
-      date: "March 2020 - April 2021",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
-      iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
-      iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-    {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-  ];
+  {
+    title: "Frontend Developer",
+    company_name: "HTML, CSS, JavaScript",
+    icon: html,
+    iconBg: "#383E56",
+    date: "March 2024 - Dec 2024",
+    points: [
+      "Built responsive and interactive UI using HTML, CSS, and JavaScript.",
+      "Converted UI designs into clean, pixel-perfect web pages.",
+      "Improved performance and ensured mobile responsiveness across devices."
+    ],
+  },
+  {
+    title: "React Native Developer",
+    company_name: "React Native",
+    icon: reactjs,
+    iconBg: "#E6DEDD",
+    date: "Jan 2025 - March 2025",
+    points: [
+      "Developed mobile applications using React Native.",
+      "Integrated APIs and managed application state efficiently.",
+      "Collaborated with designers and backend developers for smooth UI/UX."
+    ],
+  },
+  {
+    title: "Backend Developer",
+    company_name: "Python, SQL, MongoDB",
+    icon: mongodb,
+    iconBg: "#E6DEDD",
+    date: "April 2025 - Dec 2025",
+    points: [
+      "Built RESTful APIs using Python (Flask/Django).",
+      "Managed SQL and MongoDB databases for data storage.",
+      "Implemented authentication and secure backend services."
+    ],
+  },
+  {
+    title: "Full Stack Developer",
+    company_name: "",
+    icon: nodejs,
+    iconBg: "#383E56",
+    date: "Jan 2026 - Present",
+    points: [
+      "Developing full-stack web apps using React and Nodejs.",
+      "Connecting frontend with backend via REST APIs.",
+      "Working with SQL and MongoDB for scalable data handling.",
+      "Ensuring performance, security, and responsive design."
+    ],
+  },
+];
   
   const testimonials = [
     {
-      testimonial:
-        "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-      name: "Sara Lee",
-      designation: "CFO",
-      company: "Acme Co",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
-    },
-    {
-      testimonial:
-        "I've never met a web developer who truly cares about their clients' success like Rick does.",
-      name: "Chris Brown",
-      designation: "COO",
-      company: "DEF Corp",
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    {
-      testimonial:
-        "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-      name: "Lisa Wang",
-      designation: "CTO",
-      company: "456 Enterprises",
-      image: "https://randomuser.me/api/portraits/women/6.jpg",
-    },
-  ];
+    testimonial:
+      "The iTask Planner is very intuitive and helped me organize daily tasks better. The drag-and-drop feel and clean design make it easy to use.",
+    name: "Productivity User",
+    designation: "Student (Project Feedback)",
+    company: "iTask Planner",
+    image: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    testimonial:
+      "MyText Utils made text formatting and quick editing much faster. The clean UI and simple tools helped me complete tasks efficiently.",
+    name: "Portfolio User",
+    designation: "Developer (Project Feedback)",
+    company: "MyText Utils",
+    image: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+  {
+    testimonial:
+      "Baitun Nasr Islamic Finance project presents financial information in a clear and structured way. The interface feels professional and trustworthy.",
+    name: "Finance App User",
+    designation: "Demo Client Feedback",
+    company: "Baitun Nasr Islamic Finance",
+    image: "https://randomuser.me/api/portraits/men/65.jpg",
+  },
+];
   
   const projects = [
     {
@@ -258,7 +255,7 @@ import {
         },
       ],
       image: baitunnasr,
-      source_code_link: "https://bait-un-nasr.netlify.app/",
+      source_code_link: "https://baitunnasr.netlify.app/",
     },
   ];
   

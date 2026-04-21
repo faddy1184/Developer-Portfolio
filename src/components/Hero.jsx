@@ -6,16 +6,16 @@ import heroBg from "../assets/herobg.png";
 const Hero = () => {
   return (
     <section
-      className="relative w-full h-screen mx-auto"
+      className="relative w-full min-h-[100dvh] mx-auto overflow-hidden"
       style={{
         backgroundImage: `url(${heroBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        cursor: "pointer",
       }}
     >
+      {/* Content */}
       <div
-        className={`${styles.paddingX} absolute inset-0 top-[90px] sm:top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-4 sm:gap-5`}
+        className={`${styles.paddingX} relative z-10 pt-[100px] sm:pt-[120px] max-w-7xl mx-auto flex flex-row items-start gap-4 sm:gap-5`}
       >
         {/* Left line */}
         <div className="flex flex-col justify-center items-center mt-3 sm:mt-5">
@@ -25,15 +25,11 @@ const Hero = () => {
 
         {/* Text */}
         <div>
-          <h1
-            className={`${styles.heroHeadText} text-[28px] sm:text-[48px] leading-tight`}
-          >
+          <h1 className={`${styles.heroHeadText} text-[28px] sm:text-[48px] leading-tight`}>
             Hi, I'm <span className="text-[rgb(138,0,251)]">Faddy</span>
           </h1>
 
-          <p
-            className={`${styles.heroSubText} mt-1 sm:mt-2 text-white-100 text-[14px] sm:text-[18px] leading-snug`}
-          >
+          <p className={`${styles.heroSubText} mt-1 sm:mt-2 text-[14px] sm:text-[18px] leading-snug`}>
             I develop 3D visuals, user
             <br className="sm:block hidden" />
             interfaces and web applications
@@ -41,10 +37,13 @@ const Hero = () => {
         </div>
       </div>
 
-      <ComputersCanvas />
+      {/* 3D Canvas */}
+      <div className="absolute inset-0 z-0">
+        <ComputersCanvas />
+      </div>
 
       {/* Scroll indicator */}
-      <div className="absolute xs:bottom-10 bottom-5 w-full flex justify-center items-center">
+      <div className="absolute bottom-5 sm:bottom-10 w-full flex justify-center items-center z-10">
         <a href="#about">
           <div className="w-[24px] h-[44px] sm:w-[30px] sm:h-[54px] rounded-3xl border-4 border-white flex justify-center items-start p-1">
             <motion.div

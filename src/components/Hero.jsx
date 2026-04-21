@@ -1,35 +1,21 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { styles } from "../styles";
 import { ComputersCanvas } from "./canvas";
+import heroBg from "../assets/herobg.png";
 
 const Hero = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    checkMobile();
-
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
   return (
     <section
-      className="relative w-full min-h-screen mx-auto overflow-hidden bg-black"
+      className="relative w-full h-screen mx-auto"
       style={{
-        backgroundImage: "url('/herobg.png')", // ✅ from public folder
+        backgroundImage: `url(${heroBg})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        cursor: "pointer",
       }}
     >
-      {/* Dark overlay for readability */}
-      <div className="absolute inset-0 bg-black/60 z-0" />
-
-      {/* Content */}
       <div
-        className={`${styles.paddingX} relative z-20 pt-[100px] sm:pt-[120px] max-w-7xl mx-auto flex flex-row items-start gap-4 sm:gap-5`}
+        className={`${styles.paddingX} absolute inset-0 top-[90px] sm:top-[120px] max-w-7xl mx-auto flex flex-row items-start gap-4 sm:gap-5`}
       >
         {/* Left line */}
         <div className="flex flex-col justify-center items-center mt-3 sm:mt-5">
@@ -39,11 +25,15 @@ const Hero = () => {
 
         {/* Text */}
         <div>
-          <h1 className={`${styles.heroHeadText}`}>
+          <h1
+            className={`${styles.heroHeadText} text-[28px] sm:text-[48px] leading-tight`}
+          >
             Hi, I'm <span className="text-[rgb(138,0,251)]">Faddy</span>
           </h1>
 
-          <p className={`${styles.heroSubText} mt-2`}>
+          <p
+            className={`${styles.heroSubText} mt-1 sm:mt-2 text-white-100 text-[14px] sm:text-[18px] leading-snug`}
+          >
             I develop 3D visuals, user
             <br className="sm:block hidden" />
             interfaces and web applications
@@ -51,15 +41,10 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* ✅ 3D Canvas ONLY for desktop */}
-      {!isMobile && (
-        <div className="absolute inset-0 z-10">
-          <ComputersCanvas />
-        </div>
-      )}
+      <ComputersCanvas />
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-5 sm:bottom-10 w-full flex justify-center items-center z-20">
+      <div className="absolute xs:bottom-10 bottom-5 w-full flex justify-center items-center">
         <a href="#about">
           <div className="w-[24px] h-[44px] sm:w-[30px] sm:h-[54px] rounded-3xl border-4 border-white flex justify-center items-start p-1">
             <motion.div
